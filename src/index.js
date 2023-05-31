@@ -11,7 +11,7 @@ handlebarsConfig(app);
 expressConfig(app)
 
 //Routes
-app.get('/', homeController.getHome);
+app.use(homeController);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);
