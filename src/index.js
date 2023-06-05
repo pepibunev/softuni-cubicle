@@ -5,7 +5,7 @@ const expressConfig = require('./config/expressConfig');
 const routes = require('./routes');
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 handlebarsConfig(app);
 expressConfig(app)
