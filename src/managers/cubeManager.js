@@ -5,7 +5,7 @@ exports.getAll = async (search, from, to) => {
     let result = await Cube.find().lean();
 
     //TODO use mongoose to filter in db
-    if (search){
+    if (search) {
         result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()));
     }
 
@@ -13,7 +13,7 @@ exports.getAll = async (search, from, to) => {
         result = result.filter(cube => cube.difficultyLevel >= Number(from));
     }
 
-    if(to){
+    if (to) {
         result = result.filter(cube => cube.difficultyLevel <= Number(to));
     }
 
@@ -25,7 +25,7 @@ exports.getOne = (cubeId) => Cube.findById(cubeId).populate('accessories');
 
 exports.create = (cubeData) => {
     const cube = new Cube(cubeData);
-    
+
     return cube.save();
 };
 
