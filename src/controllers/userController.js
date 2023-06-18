@@ -7,15 +7,15 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-    const { 
-        username, 
-        password, 
-        repeatPassword 
+    const {
+        username,
+        password,
+        repeatPassword
     } = req.body;
 
     await userManager.register({
-        username, 
-        password, 
+        username,
+        password,
         repeatPassword
     });
 
@@ -26,5 +26,16 @@ router.get('/login', (req, res) => {
     res.render('users/login');
 });
 
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    const token = await userManager.login(username, password);
+
+    console.log(token);
+
+    res.cookie('auth', token, { httpOnly: true });
+
+    res.redirect('/');
+});
 
 module.exports = router;
