@@ -29,6 +29,8 @@ exports.create = (cubeData) => {
     return cube.save();
 };
 
+exports.delete = (cubeId) => Cube.findByIdAndDelete(cubeId);
+
 exports.attachAccessory = async (cubeId, accessoryId) => {
     //Cube.findByIdAndUpdate(cubeId, {$push: {accessories: accessoryId}});
     const cube = await Cube.findById(cubeId);
